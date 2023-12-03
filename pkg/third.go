@@ -81,7 +81,8 @@ func Schematic() {
 	for _, line := range strings.Split(inputString, "\n") {
 		schematic = append(schematic, strings.TrimSpace(line))
 	}
-
+	fmt.Println("-------Advent of Code 2023 #3-------")
 	sum := sumPartNumbers(schematic)
-	fmt.Println("Sum of all part numbers:", sum)
+	fmt.Println("The sum of all part numbers")
+	fmt.Println("Result: ", sum)
 }
