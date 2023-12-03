@@ -19,7 +19,7 @@ func sumPartNumbers(schematic []string) int {
 			if unicode.IsDigit(char) {
 				number, end := extractNumber(line, x)
 				if isAdjacentToSymbol(schematic, x, y, end) {
-					fmt.Println("Found number at: ", number, "at", x, y)
+					fmt.Println("Found number: ", number, "at", x, y)
 					value, _ := strconv.Atoi(number)
 					sum += value
 					x = end - 1 // Skip to the end of the current number
