@@ -1,1 +1,1 @@
-# Advent of Code 2023 in GO with tests
+# Advent of Code 2023 in GO with tests and benchmarks
