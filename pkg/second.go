@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"fmt"
+	"log"
 	"strconv"
 	"strings"
 )
@@ -15,12 +15,12 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
 `
 
 func CubeGame() {
-	fmt.Println("-------Advent of Code 2023 #2-------")
+	log.Println("-------Advent of Code 2023 #2-------")
 	result := processGames(inputData)
-	fmt.Println("The sum of the IDs of the possible games")
-	fmt.Println("Result: ", result)
-	fmt.Println("---------")
-	fmt.Println()
+	log.Println("The sum of the IDs of the possible games")
+	log.Println("Result: ", result)
+	log.Println("---------")
+	log.Println()
 }
 
 func isGamePossible(sets []map[string]int, maxCubes map[string]int) bool {
@@ -56,7 +56,7 @@ func processGames(inputData string) int {
 				count, color := strings.Split(item, " ")[0], strings.Split(item, " ")[1]
 				countColor, err := strconv.Atoi(count)
 				if err != nil {
-					fmt.Println(err.Error())
+					log.Println(err.Error())
 					continue
 				}
 				setData[color] = countColor
@@ -67,7 +67,7 @@ func processGames(inputData string) int {
 		if isGamePossible(sets, maxCubes) {
 			possibleGame, err := strconv.Atoi(gameID)
 			if err != nil {
-				fmt.Println(err.Error())
+				log.Println(err.Error())
 				continue
 			}
 			possibleGames = append(possibleGames, possibleGame)

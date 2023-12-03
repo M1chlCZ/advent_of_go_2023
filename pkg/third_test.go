@@ -1,6 +1,8 @@
 package pkg
 
 import (
+	"io"
+	"log"
 	"strings"
 	"testing"
 )
@@ -203,4 +205,37 @@ func TestSumPartNumbersFromString(t *testing.T) {
 	if result := sumPartNumbers(schematic); result != expected {
 		t.Errorf("sumPartNumbers() returned %d, expected %d", result, expected)
 	}
+}
+
+func generateSchematic() []string {
+	inputString := `467..114..
+				...*......
+				..35..633.
+				......#...
+				617*......
+				.....+.58.
+				..592.....
+				......755.
+				...$.*....
+				.664.598..`
+
+	var schematic []string
+	for _, line := range strings.Split(inputString, "\n") {
+		schematic = append(schematic, strings.TrimSpace(line))
+	}
+	return schematic
+}
+
+func BenchmarkSumPartNumbers(b *testing.B) {
+	schematic := generateSchematic()
+
+	currOutput := log.Writer()
+	log.SetOutput(io.Discard)
+
+	for i := 0; i < b.N; i++ {
+		sumPartNumbers(schematic) // the function to be benchmark.
+	}
+
+	// Restore output back
+	log.SetOutput(currOutput)
 }

@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"fmt"
+	"log"
 	"strconv"
 	"strings"
 	"unicode"
@@ -19,7 +19,8 @@ func sumPartNumbers(schematic []string) int {
 			if unicode.IsDigit(char) {
 				number, end := extractNumber(line, x)
 				if isAdjacentToSymbol(schematic, x, y, end) {
-					fmt.Println("Found number at: ", number, "at", x, y)
+					log.Println("Found number at: ", number, "at", x, y)
+					//log.Println("Found number at: ", number, "at", x, y)
 					value, _ := strconv.Atoi(number)
 					sum += value
 					x = end - 1 // Skip to the end of the current number
@@ -82,8 +83,8 @@ func Schematic() {
 	for _, line := range strings.Split(inputString, "\n") {
 		schematic = append(schematic, strings.TrimSpace(line))
 	}
-	fmt.Println("-------Advent of Code 2023 #3-------")
+	log.Println("-------Advent of Code 2023 #3-------")
 	sum := sumPartNumbers(schematic)
-	fmt.Println("The sum of all part numbers")
-	fmt.Println("Result: ", sum)
+	log.Println("The sum of all part numbers")
+	log.Println("Result: ", sum)
 }

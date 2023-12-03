@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"fmt"
+	"log"
 	"strings"
 	"unicode"
 )
@@ -13,17 +13,17 @@ func Calibration() {
 	a1b2c3d4e5f
 	treb7uchet`
 
-	fmt.Println("-------Advent of Code 2023 #1-------")
+	log.Println("-------Advent of Code 2023 #1-------")
 	lines := strings.Split(inputString, "\n")
 	for _, line := range lines {
-		fmt.Println(strings.TrimSpace(line))
+		log.Println(strings.TrimSpace(line))
 	}
-	fmt.Println("---------")
-	fmt.Println()
+	log.Println("---------")
+	log.Println()
 
 	pairs, err := findNumberPairs(inputString)
 	if err != nil {
-		fmt.Println(err.Error())
+		log.Println(err.Error())
 		return
 	}
 
@@ -32,7 +32,7 @@ func Calibration() {
 		sum += num
 	}
 
-	fmt.Println("Result: ", sum)
+	log.Println("Result: ", sum)
 }
 
 func findNumberPairs(inputString string) ([]int, error) {
@@ -47,7 +47,7 @@ func findNumberPairs(inputString string) ([]int, error) {
 			if unicode.IsDigit(r) {
 				firstDigit = int(r - '0')
 				foundFirst = true
-				fmt.Println("Found first digit: ", firstDigit)
+				log.Println("Found first digit: ", firstDigit)
 				break
 			}
 		}
@@ -56,15 +56,15 @@ func findNumberPairs(inputString string) ([]int, error) {
 			if unicode.IsDigit(rune(line[i])) {
 				lastDigit = int(line[i] - '0')
 				foundLast = true
-				fmt.Println("Found second digit: ", lastDigit)
+				log.Println("Found second digit: ", lastDigit)
 				break
 			}
 		}
 
 		if foundFirst && foundLast {
 			numberPairs = append(numberPairs, firstDigit*10+lastDigit)
-			fmt.Println("Found pair: ", firstDigit*10+lastDigit)
-			fmt.Println("---------")
+			log.Println("Found pair: ", firstDigit*10+lastDigit)
+			log.Println("---------")
 		}
 	}
 
