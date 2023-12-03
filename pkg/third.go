@@ -66,6 +66,7 @@ func isSymbolInAdjacentCells(schematic []string, x, y int) bool {
 }
 
 func Schematic() {
+	//BEWARE OF THE WHITE SPACE, IT WILL BREAK YOUR MOTIVATION TO LIVE
 	inputString := `467..114..
 					...*......
 					..35..633.
