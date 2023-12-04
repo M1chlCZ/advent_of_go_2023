@@ -33,6 +33,7 @@ func Calibration() {
 	}
 
 	log.Println("Result: ", sum)
+	log.Println()
 }
 
 func findNumberPairs(inputString string) ([]int, error) {

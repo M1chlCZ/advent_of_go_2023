@@ -87,4 +87,5 @@ func Schematic() {
 	sum := sumPartNumbers(schematic)
 	log.Println("The sum of all part numbers")
 	log.Println("Result: ", sum)
+	log.Println()
 }

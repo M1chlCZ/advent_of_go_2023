@@ -20,11 +20,14 @@ func TestSumPartNumbers(t *testing.T) {
 		"...$.*....",
 		".664.598..",
 	}
-
+	currOutput := log.Writer()
+	log.SetOutput(io.Discard)
 	expected := 4361
 	if result := sumPartNumbers(input); result != expected {
 		t.Errorf("sumPartNumbers() returned %d, expected %d", result, expected)
 	}
+
+	log.SetOutput(currOutput)
 }
 
 func TestIsSymbolInAdjacentCells(t *testing.T) {
@@ -40,10 +43,11 @@ func TestIsSymbolInAdjacentCells(t *testing.T) {
 		"...$.*....",
 		".664.598..",
 	}
-
+	currOutput := log.Writer()
+	log.SetOutput(io.Discard)
 	expectedTrue := isSymbolInAdjacentCells(input, 4, 1)
 	expectedFalse := isSymbolInAdjacentCells(input, 3, 1)
-
+	log.SetOutput(currOutput)
 	if !expectedTrue {
 		t.Errorf("isSymbolInAdjacentCells() returned %t, expected %t", expectedTrue, true)
 	}
@@ -51,6 +55,7 @@ func TestIsSymbolInAdjacentCells(t *testing.T) {
 	if expectedFalse {
 		t.Errorf("isSymbolInAdjacentCells() returned %t, expected %t", expectedFalse, false)
 	}
+
 }
 
 func TestSumPartNumbersFromString(t *testing.T) {
@@ -196,7 +201,8 @@ func TestSumPartNumbersFromString(t *testing.T) {
 .....................815.........786................186...........640......388.......415....4..36.....894.........................303.......`
 
 	expected := 531561
-
+	currOutput := log.Writer()
+	log.SetOutput(io.Discard)
 	schematic := make([]string, 0)
 	for _, line := range strings.Split(input, "\n") {
 		schematic = append(schematic, strings.TrimSpace(line))
@@ -205,6 +211,7 @@ func TestSumPartNumbersFromString(t *testing.T) {
 	if result := sumPartNumbers(schematic); result != expected {
 		t.Errorf("sumPartNumbers() returned %d, expected %d", result, expected)
 	}
+	log.SetOutput(currOutput)
 }
 
 func generateSchematic() []string {

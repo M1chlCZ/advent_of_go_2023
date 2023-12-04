@@ -6,4 +6,5 @@ func main() {
 	pkg.Calibration()
 	pkg.CubeGame()
 	pkg.Schematic()
+	pkg.WinningCards()
 }
